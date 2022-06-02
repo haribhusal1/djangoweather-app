@@ -2,7 +2,26 @@
 
 {% block content %}
 
-<h1>Hello Mayalu</h1>
+
+<br/>
+
+{% if zipcode %}
+    {{ zipcode }}
+{% endif %}
+
+{% if api %}
+    {% if api == "Error..." %}
+        There was an error, Please try again.
+    {% else %}
+        <div class="jumbotron {{ category_color }}">
+          <h1 class="display-4">Category: {{ api.0.Category.Name }} </h1>
+          <p class="lead">Current {{ api.0.ReportingArea }} Air Quality: {{ api.0.AQI }} </p>
+            <p>{{ category_description }}</p>
+        </div>
+    {% endif %}
+
+{% endif %}
+
 
 {% endblock %}
 
